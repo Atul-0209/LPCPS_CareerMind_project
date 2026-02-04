@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LPCPS CareerMind – Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f1f5f9;
+            padding: 40px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #0f172a;
+            margin-bottom: 40px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            margin-bottom: 22px;
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .score {
+            font-size: 32px;
+            font-weight: bold;
+            color: #16a34a;
+        }
+
+        .link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>LPCPS CareerMind – Career Dashboard</h2>
+
+<div class="container">
+
+    <div class="card">
+        <h3>Extracted Skills</h3>
+        <p>{{ skills }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Recommended Career</h3>
+        <p><b>{{ career }}</b></p>
+    </div>
+
+    <div class="card">
+        <h3>Career Readiness Score</h3>
+        <div class="score">{{ readiness_score }}%</div>
+        <p>Based on industry-required skills</p>
+    </div>
+
+    <div class="card">
+        <h3>Missing Skills (Skill Gap)</h3>
+        <p>{{ missing_skills }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Personalized Learning Roadmap</h3>
+        <ul>
+            {% for item in roadmap %}
+            <li>
+                <b>{{ item.skill }}</b><br>
+                Course: {{ item.course }}<br>
+                Practice Project: {{ item.project }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>Recommended Internship Opportunities</h3>
+        <ul>
+            {% for intern in internships %}
+            <li>
+                <b>{{ intern.company }}</b><br>
+                Role: {{ intern.role }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <a class="link" href="/analytics">📊 View University Analytics</a>
+    <a class="link" href="/">⬅ Analyze Another Resume</a>
+
+</div>
+
+</body>
+</html>

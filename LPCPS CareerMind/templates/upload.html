@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="max-w-7xl mx-auto px-6 py-14 grid lg:grid-cols-2 gap-16 items-center">
+
+  <!-- LEFT SECTION -->
+  <div>
+    <img 
+      src="{{ url_for('static', filename='lpcps_logo.png') }}" 
+      class="w-28 mb-6 drop-shadow-xl"
+      alt="LPCPS Logo"
+    >
+
+    <h1 class="text-5xl font-extrabold leading-tight mb-5">
+      LPCPS <span class="text-sky-400">CareerMind</span>
+    </h1>
+
+    <p class="text-slate-300 text-lg max-w-xl mb-8">
+      AI-powered career intelligence platform helping students
+      discover the right career path, identify skill gaps,
+      and measure industry readiness.
+    </p>
+
+    <div class="grid sm:grid-cols-2 gap-4 max-w-xl">
+      <div class="bg-white/10 backdrop-blur rounded-xl px-5 py-4">🚀 AI Resume Analysis</div>
+      <div class="bg-white/10 backdrop-blur rounded-xl px-5 py-4">📊 Career Readiness Score</div>
+      <div class="bg-white/10 backdrop-blur rounded-xl px-5 py-4">🧠 Skill Gap Roadmap</div>
+      <div class="bg-white/10 backdrop-blur rounded-xl px-5 py-4">🏫 University Analytics</div>
+    </div>
+  </div>
+
+  <!-- RIGHT CARD -->
+  <div class="bg-white text-slate-900 rounded-2xl shadow-2xl p-10">
+    <h2 class="text-2xl font-bold mb-2">Analyze Your Resume</h2>
+    <p class="text-slate-500 mb-6 text-sm">
+      Upload or paste your resume to receive AI-powered insights.
+    </p>
+
+    <form method="POST" action="/analyze" enctype="multipart/form-data" class="space-y-4">
+      <textarea
+        name="resume"
+        placeholder="Paste your resume text here..."
+        class="w-full h-36 p-4 rounded-xl border focus:ring-2 focus:ring-blue-500"
+      ></textarea>
+
+      <input type="file" name="resume_file">
+
+      <button
+        type="submit"
+        class="w-full bg-gradient-to-r from-blue-600 to-sky-500 text-white font-semibold py-3 rounded-xl hover:scale-[1.02] transition"
+      >
+        Analyze Resume
+      </button>
+    </form>
+
+    <p class="text-center text-xs text-slate-400 mt-5">
+      Powered by AI • Built for LPCPS Students
+    </p>
+  </div>
+
+</div>
+
+{% endblock %}

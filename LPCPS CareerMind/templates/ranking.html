@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-2xl font-bold mb-6">Student Ranking</h2>
+
+<table class="w-full bg-slate-800 rounded overflow-hidden">
+  <tr class="bg-slate-700">
+    <th class="p-3 text-left">Rank</th>
+    <th class="p-3 text-left">Student Name</th>
+    <th class="p-3 text-left">Score</th>
+  </tr>
+
+  {% for student in rankings %}
+  <tr class="border-b border-slate-700">
+    <td class="p-3">#{{ loop.index }}</td>
+    <td class="p-3">{{ student.name }}</td>
+    <td class="p-3">{{ student.score }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

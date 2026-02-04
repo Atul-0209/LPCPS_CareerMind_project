@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-2xl font-bold mb-6">Skill Assessment Test</h2>
+
+<form method="POST" action="/submit_test" class="space-y-6">
+
+  <!-- Student Name -->
+  <div>
+    <label class="block mb-2 font-medium">Student Name</label>
+    <input
+      type="text"
+      name="name"
+      required
+      class="w-full p-3 rounded text-black"
+      placeholder="Enter your name"
+    >
+  </div>
+
+  <!-- Questions -->
+  {% for q in questions %}
+    <div class="bg-slate-800 p-5 rounded">
+      <p class="font-semibold mb-3">
+        {{ q.question }}
+      </p>
+
+      {% for opt in q["options"] %}
+        <label class="block mb-1">
+          <input
+            type="radio"
+            name="{{ q.id }}"
+            value="{{ opt }}"
+            required
+          >
+          {{ opt }}
+        </label>
+      {% endfor %}
+    </div>
+  {% endfor %}
+
+  <button
+    type="submit"
+    class="bg-sky-500 px-8 py-3 rounded font-semibold hover:bg-sky-600"
+  >
+    Submit Test
+  </button>
+
+</form>
+
+{% endblock %}
